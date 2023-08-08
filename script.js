@@ -18,7 +18,6 @@ function TreeMaker(unfilteredArr, start, unfilteredEnd) {
   filteredArr.sort((a, b) => {
     return a - b;
   });
-  console.log(filteredArr);
   function constructor(array, start, end) {
     // base case:
     if (start > end) {
@@ -160,9 +159,9 @@ function TreeMaker(unfilteredArr, start, unfilteredEnd) {
           } else {
             Fn(element);
           }
-          if (!Fn) {
-            return values;
-          }
+        }
+        if (!Fn) {
+          return values;
         }
       },
     };
@@ -176,7 +175,6 @@ function TreeMaker(unfilteredArr, start, unfilteredEnd) {
             return;
           }
           recurse(root.left, stack);
-          console.log(root.data);
           stack.push(root);
           recurse(root.right, stack);
           //visit right subtree
@@ -206,7 +204,6 @@ function TreeMaker(unfilteredArr, start, unfilteredEnd) {
           if (root == null) {
             return;
           }
-          console.log(root.data);
           stack.push(root);
           recurse(root.left, stack);
           recurse(root.right, stack);
@@ -239,7 +236,6 @@ function TreeMaker(unfilteredArr, start, unfilteredEnd) {
           }
           recurse(root.left, stack);
           recurse(root.right, stack);
-          console.log(root.data);
           stack.push(root);
           //visit right subtree
           return stack;
@@ -365,9 +361,21 @@ console.log("test: " + tree.height(tree));
 tree.breadth(function (node) {
   console.log(node, tree.height(node));
 });
+console.log("script begins here");
+console.log(tree.isBalanced(tree));
+// console.log(tree.breadth());
+// console.log(tree.inOrder(tree));
+// console.log(tree.preOrder(tree));
+// console.log(tree.postOrder(tree));
+prettyPrint(tree);
 
-tree.insert(100);
-tree.insert(99);
+tree.insert(101);
+tree.insert(102);
+console.log(tree.isBalanced(tree));
 const newTree = tree.reBalance();
-console.log(newTree.isBalanced(newTree));
+console.log(tree.isBalanced(newTree));
 prettyPrint(newTree);
+console.log(newTree.breadth());
+console.log(tree.inOrder(newTree));
+console.log(tree.preOrder(newTree));
+console.log(tree.postOrder(newTree));
